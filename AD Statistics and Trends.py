@@ -97,13 +97,59 @@ df_arable_t["Spain"] = pd.to_numeric(df_arable_t["Spain"])
 df_arable_t["United States"] = pd.to_numeric(df_arable_t["United States"])
       
 df_arable_t.plot()
+plt.xlabel('Country')
+plt.ylabel('Area(%)')
+plt.title('ARABLE LAND(%)')
+plt.savefig('Arableland.png')
+plt.show()
 
-df_energy, df_energy_t=Read_data("C:\\Users\\DELL\\Downloads\\AD ASSIGNMENT2\\ENERGY.csv")
-print(df_energy)
-print(df_energy_t)
+plot(df_arable,"bar")  
+plt.xlabel('Country')
+plt.ylabel('Area(%)')
+plt.title('ARABLE LAND(%)')
+plt.savefig('Arableland.png')
+plt.show()
 
 
+# reading the data total population
+df_population, df_population_t=Read_data("C:\\Users\\DELL\\Downloads\\AD ASSIGNMENT2\\TOTAL POPULATION.csv")
+print(df_population)
+print(df_population_t)
+df_population_t["Australia"] = pd.to_numeric(df_population_t["Australia"])
+df_population_t["China"] = pd.to_numeric(df_population_t["China"])
+df_population_t["France"] = pd.to_numeric(df_population_t["France"])
+df_population_t["Germany"] = pd.to_numeric(df_population_t["Germany"])
+df_population_t["India"] = pd.to_numeric(df_population_t["India"])
+df_population_t["Spain"] = pd.to_numeric(df_population_t["Spain"])
+df_population_t["United States"] = pd.to_numeric(df_population_t["United States"])
 
+# line graph for total population
+df_population_t.plot()
+plt.xlabel('Year')
+plt.ylabel('population(million)')
+plt.title('TOTAL POPULATION (MILLION)')
+plt.savefig('Totalpopulation.png')
+plt.show()
+
+# reading the file population growth
+df_population= pd.read_csv("C:\\Users\\DELL\\Downloads\\AD ASSIGNMENT2\\P GROWTH.csv")
+print(df_population)
+# analysing Australias population growth from 2015 to 2021 using piechart
+Year = ['2015', '2016', '2017', '2018', '2019', '2020', '2021']
+Population = np.array([1.439216653, 1.561940498, 1.684523108, 1.536105516,1.521653677, 1.282933, 0.178832418])
+ 
+plt.figure()
+plt.pie(Population, labels=Year)
+plt.title('POPULATION GROWTH (AUSTRALIA)', size=8)
+plt.savefig('pgrowth.png')
+plt.show()
+
+aver = np.mean(df_agriculture_t["India"])
+print("Average agriculture land area of India:", aver)
+std = np.std(df_agriculture_t["India"])
+print("Std. deviation agricultural land area of India:", std)
+print("Skew:", stats.skew(df_agriculture_t["India"]))
+print("Kurtosis", stats.kurtosis(df_agriculture_t["India"]))
 
 
 
